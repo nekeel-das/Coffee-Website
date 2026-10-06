@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Your Cart | Bean Boutique</title>
+{% endblock %}
+
+{% block meta_desc %}Review your selection and check out securely at Bean Boutique.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Checkout</span>
+    <h1 class="section-title">Your Selection</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cart-layout">
+      <div class="cart-panel">
+        <div class="cart-panel-header">
+          <h2>Cart Items</h2>
+          <button class="btn btn-ghost btn-sm" onclick="clearCart()"><i class="fas fa-trash"></i> Clear</button>
+        </div>
+        <div id="cartItemsList"></div>
+        <div class="cart-empty" id="cartEmptyState" style="display:none;">
+          <i class="fas fa-bag-shopping"></i>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added anything yet.</p>
+          <a href="{{ url_for('coffee') }}" class="btn btn-primary">Browse Coffee</a>
+        </div>
+      </div>
+
+      <aside class="order-summary-panel" id="cartSummary">
+        <h2>Order Summary</h2>
+        <div class="promo-row">
+          <input class="promo-input" id="promoInput" type="text" placeholder="Promo code (try BEAN10)">
+          <button class="btn btn-ghost btn-sm" onclick="applyPromo()">Apply</button>
+        </div>
+        <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">₹0</span></div>
+        <div class="summary-row" id="discountRow" style="display:none;"><span>Discount (10%)</span><span id="summaryDiscount" style="color:var(--clr-green);">−₹0</span></div>
+        <div class="summary-row"><span>Shipping</span><span id="summaryShipping">₹0</span></div>
+        <div class="summary-row total"><span>Total</span><span id="summaryTotal">₹0</span></div>
+        <button class="btn btn-primary btn-full btn-lg" style="margin-top:1.25rem;" onclick="showToast('Ordering coming soon', 'info')">
+          <i class="fas fa-lock"></i> Ordering coming soon
+        </button>
+        <p style="text-align:center;font-size:0.75rem;color:var(--clr-text-faint);margin-top:0.75rem;">Free shipping over ₹5,000</p>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

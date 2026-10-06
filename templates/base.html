@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block head %}{% endblock %}
+<meta name="description" content="{% block meta_desc %}Bean Boutique — Premium single-origin coffees, brewing equipment and expert experiences.{% endblock %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ───── NAVBAR ───── -->
+<nav class="navbar {% block nav_class %}page-nav{% endblock %}" id="mainNav" aria-label="Main navigation">
+  <a href="{{ url_for('index') }}" class="nav-logo">Bean<span>·</span>Boutique</a>
+
+  <!-- Desktop nav links -->
+  <div class="nav-links">
+    <a href="{{ url_for('coffee') }}" id="navCoffee">Browse</a>
+    <a href="{{ url_for('equipment') }}" id="navEquipment">Equipment</a>
+    <a href="{{ url_for('events') }}" id="navEvents">Events</a>
+    <a href="{{ url_for('subscriptions') }}" id="navSubs">Subscriptions</a>
+  </div>
+
+  <!-- Desktop actions -->
+  <div class="nav-actions">
+    <a href="{{ url_for('cart') }}" class="cart-icon-link" aria-label="View cart">
+      <i class="fas fa-bag-shopping"></i>
+      <span class="cart-counter">0</span>
+    </a>
+
+    <!-- Login button (shown when logged out) -->
+    <li id="loginNavBtn" style="list-style:none;">
+      <a href="#" onclick="openAuthModal(event)" class="btn-login" id="loginBtn">
+        <i class="fas fa-user"></i> Sign In
+      </a>
+    </li>
+
+    <!-- User avatar (shown when logged in) -->
+    <li id="userNavBtn" style="display:none; list-style:none;" class="user-nav-item">
+      <div class="user-avatar" onclick="toggleUserMenu(event)" id="userAvatarBtn" tabindex="0" role="button" aria-haspopup="true">J</div>
+      <div class="user-menu" id="userMenuDropdown" role="menu">
+        <a href="{{ url_for('profile') }}" role="menuitem"><i class="fas fa-user-circle"></i> My Profile</a>
+        <a href="{{ url_for('orders') }}" role="menuitem"><i class="fas fa-box-open"></i> My Orders</a>
+        <a href="{{ url_for('wishlist') }}" role="menuitem"><i class="fas fa-heart"></i> Wishlist</a>
+        <a href="{{ url_for('subscriptions') }}" role="menuitem"><i class="fas fa-rotate"></i> Subscriptions</a>
+        <a href="{{ url_for('my_events') }}" role="menuitem"><i class="fas fa-calendar-check"></i> My Events</a>
+        <div class="user-menu-divider"></div>
+        <a href="{{ url_for('admin') }}" role="menuitem"><i class="fas fa-sliders"></i> Admin Panel</a>
+        <div class="user-menu-divider"></div>
+        <a href="#" onclick="logoutUser(event)" class="logout-link" role="menuitem"><i class="fas fa-arrow-right-from-bracket"></i> Sign Out</a>
+      </div>
+    </li>
+
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="nav-mobile-drawer" id="mobileNavDrawer" role="navigation" aria-label="Mobile navigation">
+  <a href="{{ url_for('index') }}" onclick="toggleMobileNav()"><i class="fas fa-house"></i> Home</a>
+  <a href="{{ url_for('coffee') }}" onclick="toggleMobileNav()"><i class="fas fa-mug-hot"></i> Browse Coffee</a>
+  <a href="{{ url_for('equipment') }}" onclick="toggleMobileNav()"><i class="fas fa-blender"></i> Equipment</a>
+  <a href="{{ url_for('events') }}" onclick="toggleMobileNav()"><i class="fas fa-calendar-star"></i> Events</a>
+  <a href="{{ url_for('subscriptions') }}" onclick="toggleMobileNav()"><i class="fas fa-rotate"></i> Subscriptions</a>
+  <div class="mobile-divider"></div>
+  <a href="{{ url_for('cart') }}" onclick="toggleMobileNav()"><i class="fas fa-bag-shopping"></i> Cart</a>
+  <a href="#" onclick="openAuthModal(event); toggleMobileNav();" id="mobileLoginLink"><i class="fas fa-user"></i> Sign In</a>
+</div>
+
+<!-- ───── MAIN ───── -->
+<div class="page-content">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Bean<span>·</span>Boutique</div>
+        <p>Crafting exceptional coffee experiences since 2019. Sourced with care, roasted with passion, delivered to your door.</p>
+        <div class="social-icons">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="{{ url_for('coffee') }}">Single Origins</a></li>
+          <li><a href="{{ url_for('coffee') }}">House Blends</a></li>
+          <li><a href="{{ url_for('equipment') }}">Brewing Gear</a></li>
+          <li><a href="{{ url_for('subscriptions') }}">Subscriptions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Experience</h4>
+        <ul>
+          <li><a href="{{ url_for('events') }}">Tasting Events</a></li>
+          <li><a href="{{ url_for('events') }}">Masterclasses</a></li>
+          <li><a href="#" onclick="showComingSoon(event)">Bean Academy</a></li>
+          <li><a href="#" onclick="showComingSoon(event)">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="showComingSoon(event)">Our Story</a></li>
+          <li><a href="#" onclick="showComingSoon(event)">Sourcing</a></li>
+          <li><a href="#" onclick="showComingSoon(event)">Sustainability</a></li>
+          <li><a href="#" onclick="showComingSoon(event)">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Bean Boutique. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#" onclick="showComingSoon(event)">Privacy Policy</a>
+      <a href="#" onclick="showComingSoon(event)">Terms</a>
+      <a href="#" onclick="showComingSoon(event)">Shipping</a>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Admin | Bean Boutique</title>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <h3>Manage</h3>
+        <a href="#" class="active" onclick="showAdminTab('products',this,event)"><i class="fas fa-mug-hot"></i> Products</a>
+        <a href="#" onclick="showAdminTab('orders',this,event)"><i class="fas fa-box"></i> Orders</a>
+        <a href="#" onclick="showAdminTab('events',this,event)"><i class="fas fa-calendar"></i> Events</a>
+      </aside>
+
+      <div class="cart-panel">
+        <div id="tab-products">
+          <div class="cart-panel-header"><h2>Products</h2>
+            <button class="btn btn-primary btn-sm" onclick="showToast('Product saved (demo)','success')"><i class="fas fa-plus"></i> Add</button></div>
+          <div style="overflow-x:auto;">
+            <table class="admin-table">
+              <thead><tr><th>Name</th><th>Category</th><th>Price</th></tr></thead>
+              <tbody>
+                <tr><td>Ethiopian Yirgacheffe</td><td><span class="badge-tag coffee">Coffee</span></td><td>₹1,500</td></tr>
+                <tr><td>Colombian Supremo</td><td><span class="badge-tag coffee">Coffee</span></td><td>₹1,300</td></tr>
+                <tr><td>Midnight Reserve</td><td><span class="badge-tag coffee">Coffee</span></td><td>₹1,450</td></tr>
+                <tr><td>Prosumer Espresso Core</td><td><span class="badge-tag equipment">Equipment</span></td><td>₹1,05,000</td></tr>
+                <tr><td>Matte Black French Press</td><td><span class="badge-tag equipment">Equipment</span></td><td>₹4,500</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="tab-orders" style="display:none;">
+          <div class="cart-panel-header"><h2>Orders</h2></div>
+          <div class="cart-empty"><i class="fas fa-box-open"></i><p>No orders yet.</p></div>
+        </div>
+        <div id="tab-events" style="display:none;">
+          <div class="cart-panel-header"><h2>Events</h2></div>
+          <div style="overflow-x:auto;">
+            <table class="admin-table">
+              <thead><tr><th>Event</th><th>Date</th></tr></thead>
+              <tbody>
+                <tr><td>Origin Cupping Session</td><td>Nov 16</td></tr>
+                <tr><td>Espresso &amp; Latte Art</td><td>Nov 17</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showAdminTab(name, el, e) {
+  e.preventDefault();
+  ['products','orders','events'].forEach(t => document.getElementById('tab-'+t).style.display = t===name ? '' : 'none');
+  document.querySelectorAll('.admin-sidebar a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+{% endblock %}

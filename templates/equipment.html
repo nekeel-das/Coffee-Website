@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Brewing Equipment | Bean Boutique</title>
+{% endblock %}
+
+{% block meta_desc %}Professional brewing equipment — espresso machines, grinders, pour-overs and accessories from Bean Boutique.{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Tools of the Trade</span>
+    <h1 class="section-title">Brew Like a <em style="font-style:italic;color:var(--clr-accent);">Professional</em></h1>
+    <p class="section-subtitle" style="margin:0 auto;">Every great cup begins with great equipment. We've curated a selection of precision instruments for the serious home barista — from entry-level to connoisseur-grade.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Controls -->
+    <div class="controls-bar" data-reveal>
+      <div class="search-box">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="search" class="search-input" id="equipSearch" placeholder="Search equipment…" autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <select class="filter-chip" id="equipFilter" onchange="filterEquipment()">
+          <option value="">All Categories</option>
+          <option value="espresso">Espresso Machines</option>
+          <option value="grinder">Grinders</option>
+          <option value="pourover">Pour-Over</option>
+          <option value="accessories">Accessories</option>
+        </select>
+        <select class="filter-chip" id="priceFilter" onchange="filterEquipment()">
+          <option value="">All Prices</option>
+          <option value="low">Under ₹5,000</option>
+          <option value="mid">₹5,000–₹50,000</option>
+          <option value="high">Above ₹50,000</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid" id="equipGrid">
+
+      <div class="card" data-cat="espresso" data-price="high" data-reveal data-reveal-delay="1">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'e1','Prosumer Espresso Core')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="/static/images/espresso_machine.jpg" alt="Prosumer Espresso Machine" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Espresso Machine · Commercial Grade</span>
+          <h2 class="card-title">Prosumer Espresso Core</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+            <span>(4.7)</span>
+          </div>
+          <p class="card-desc">Commercial-grade thermal stability packed into a sleek stainless steel chassis. PID control, E61 group head.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Prosumer Espresso Core','Commercial-grade thermal stability packed into a sleek stainless steel chassis. PID temperature control, E61 group head, dual boiler system. The ultimate home espresso machine.','₹1,05,000','Espresso Machine','/static/images/espresso_machine.jpg')">
+            Learn More <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,05,000</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'e1','Prosumer Espresso Core','105000')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="espresso" data-price="mid" data-reveal data-reveal-delay="2">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'e2','Compact Espresso Bar')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80" alt="Compact Espresso Bar" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Espresso Machine · Semi-Auto</span>
+          <h2 class="card-title">Compact Espresso Bar</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>(4.3)</span>
+          </div>
+          <p class="card-desc">Perfect entry into home espresso. 15-bar pump, fast heat-up, built-in steam wand for microfoam.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Compact Espresso Bar','Perfect entry into home espresso. 15-bar pump pressure, 25-second heat-up, built-in pannarello steam wand for silky microfoam. Compact and stylish.','₹24,000','Semi-Auto Espresso','https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80')">
+            Learn More <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹24,000</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'e2','Compact Espresso Bar','24000')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="pourover" data-price="low" data-reveal data-reveal-delay="3">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'e3','Matte Black French Press')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="/static/images/french_press.jpg" alt="Matte Black French Press" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">French Press · Immersion</span>
+          <h2 class="card-title">Matte Black French Press</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+            <span>(4.5)</span>
+          </div>
+          <p class="card-desc">Double-walled stainless steel for superior heat retention. 800ml capacity with micro-mesh filter.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Matte Black French Press','Double-walled stainless steel construction ensures superior heat retention. 800ml capacity, 4-layer micro-mesh filter for a clean, full-bodied brew. Dishwasher safe.','₹4,500','French Press','/static/images/french_press.jpg')">
+            Learn More <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹4,500</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'e3','Matte Black French Press','4500')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="grinder" data-price="mid" data-reveal data-reveal-delay="4">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'e4','Ceramic Burr Grinder')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=700&q=80" alt="Ceramic Burr Grinder" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Burr Grinder · 40 Settings</span>
+          <h2 class="card-title">Ceramic Burr Grinder Pro</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(4.9)</span>
+          </div>
+          <p class="card-desc">40 precision grind settings, anti-static hopper, quiet 1400 RPM motor. From espresso to cold brew.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Ceramic Burr Grinder Pro','40 precision grind settings via stepped collar. Flat ceramic burrs for consistent particle size distribution. Anti-static coated hopper holds 300g. Ultra-quiet 1400 RPM DC motor.','₹18,500','Burr Grinder','https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=700&q=80')">
+            Learn More <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹18,500</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'e4','Ceramic Burr Grinder Pro','18500')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="accessories" data-price="low" data-reveal data-reveal-delay="1">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'e5','Precision Scale')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=700&q=80" alt="Precision Coffee Scale" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Accessory · Precision Scale</span>
+          <h2 class="card-title">Pro Brew Scale</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+            <span>(4.6)</span>
+          </div>
+          <p class="card-desc">0.1g precision, built-in timer, auto-tare. The cornerstone of consistent specialty brewing.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Pro Brew Scale','0.1g precision with integrated countdown/up timer. Auto-tare function, water-resistant surface, 2000g max capacity. USB-C rechargeable. The cornerstone tool for dialling in any brew method.','₹3,200','Accessory','https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=700&q=80')">
+            Learn More <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹3,200</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'e5','Pro Brew Scale','3200')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="pourover" data-price="low" data-reveal data-reveal-delay="2">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'e6','Gooseneck Kettle')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=700&q=80" alt="Electric Gooseneck Kettle" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Accessory · Electric Kettle</span>
+          <h2 class="card-title">Precision Gooseneck Kettle</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(4.8)</span>
+          </div>
+          <p class="card-desc">1°C precision temp control, 60-minute hold, slow-pour gooseneck for perfect bloom and extraction.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Precision Gooseneck Kettle','1°C precision temperature control with 60-minute hold. Slow-pour gooseneck spout for precise flow rate control. 1L capacity, matte black finish. The barista\'s choice for pour-over perfection.','₹7,800','Electric Kettle','https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=700&q=80')">
+            Learn More <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹7,800</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'e6','Precision Gooseneck Kettle','7800')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results" id="noEquipResults" style="display:none;">
+        <i class="fas fa-blender"></i>
+        <p>No equipment matches your selection. <button class="btn btn-ghost btn-sm" style="margin-left:0.5rem;" onclick="clearEquipFilters()">Clear Filters</button></p>
+      </div>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function filterEquipment() {
+  const cat = document.getElementById('equipFilter').value;
+  const price = document.getElementById('priceFilter').value;
+  const cards = document.querySelectorAll('#equipGrid .card[data-cat]');
+  let visible = 0;
+  cards.forEach(card => {
+    const matchCat = !cat || card.dataset.cat === cat;
+    const matchPrice = !price || card.dataset.price === price;
+    const show = matchCat && matchPrice;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noEquipResults').style.display = visible === 0 ? 'block' : 'none';
+}
+function clearEquipFilters() {
+  document.getElementById('equipFilter').value = '';
+  document.getElementById('priceFilter').value = '';
+  document.getElementById('equipSearch').value = '';
+  filterEquipment();
+  document.querySelectorAll('#equipGrid .card').forEach(c => c.style.display = '');
+  document.getElementById('noEquipResults').style.display = 'none';
+}
+</script>
+{% endblock %}

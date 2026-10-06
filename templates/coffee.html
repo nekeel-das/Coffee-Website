@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Browse Coffee | Bean Boutique</title>
+{% endblock %}
+
+{% block meta_desc %}Browse our curated selection of single-origin coffees, house blends and specialty roasts at Bean Boutique.{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Our Selection</span>
+    <h1 class="section-title">Exceptional Coffee, <em style="font-style:italic;color:var(--clr-accent);">Sourced Globally</em></h1>
+    <p class="section-subtitle" style="margin:0 auto;">Every bean tells the story of its origin. From the misty highlands of Ethiopia to the lush valleys of Colombia — explore our rotating collection of specialty coffees.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Controls -->
+    <div class="controls-bar" data-reveal>
+      <div class="search-box">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="search" class="search-input" id="coffeeSearch" placeholder="Search origin, blend, or tasting notes…" autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <select class="filter-chip" id="roastFilter" onchange="filterCoffee()">
+          <option value="">All Roasts</option>
+          <option value="light">Light Roast</option>
+          <option value="medium">Medium Roast</option>
+          <option value="dark">Dark Roast</option>
+        </select>
+        <select class="filter-chip" id="originFilter" onchange="filterCoffee()">
+          <option value="">All Origins</option>
+          <option value="africa">Africa</option>
+          <option value="latam">Latin America</option>
+          <option value="asia">Asia Pacific</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Coffee Grid -->
+    <div class="grid" id="coffeeGrid">
+
+      <div class="card" data-roast="light" data-origin="africa" data-reveal data-reveal-delay="1">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c1','Ethiopian Yirgacheffe')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=700&q=80" alt="Ethiopian Yirgacheffe" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Light Roast</span>
+          <h2 class="card-title">Ethiopian Yirgacheffe</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+            <span>(4.8)</span>
+          </div>
+          <p class="card-desc">A remarkably clean cup offering delicate jasmine aromas and vibrant bergamot citrus acidity. Fully washed, 2000m elevation.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Ethiopian Yirgacheffe','A remarkably clean cup offering delicate jasmine aromas and vibrant bergamot citrus acidity. Fully washed at 2000m elevation — one of Africa\'s most celebrated origins.','₹1,500','Single Origin · Light Roast','https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=700&q=80')">
+            Tasting Notes <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,500 <span class="price-sub">/ 250g</span></span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c1','Ethiopian Yirgacheffe','1500')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-roast="medium" data-origin="latam" data-reveal data-reveal-delay="2">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c2','Colombian Supremo')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=80" alt="Colombian Supremo" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Medium Roast</span>
+          <h2 class="card-title">Colombian Supremo</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(4.9)</span>
+          </div>
+          <p class="card-desc">Smooth, medium body with pronounced nutty undertones and a lingering caramel finish. Perfect daily driver.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Colombian Supremo','Perfectly balanced with a smooth medium body, pronounced nutty undertones and a lingering caramel finish. Sourced from Huila, Colombia.','₹1,300','Single Origin · Medium Roast','https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=80')">
+            Tasting Notes <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,300 <span class="price-sub">/ 250g</span></span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c2','Colombian Supremo','1300')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-roast="dark" data-origin="latam" data-reveal data-reveal-delay="3">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c3','Midnight Reserve')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=700&q=80" alt="Midnight Reserve" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">House Blend · Dark Roast</span>
+          <h2 class="card-title">Midnight Reserve</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(4.8)</span>
+          </div>
+          <p class="card-desc">Bold and dark-roasted, with intense dark chocolate, molasses and subtle smoky characteristics.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Midnight Reserve','A bold, dark-roasted blend exhibiting intense dark chocolate, molasses, and subtle smoky characteristics. Ideal for espresso and cold brew.','₹1,450','House Blend · Dark Roast','https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=700&q=80')">
+            Tasting Notes <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,450 <span class="price-sub">/ 250g</span></span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c3','Midnight Reserve','1450')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-roast="light" data-origin="asia" data-reveal data-reveal-delay="4">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c4','Sumatra Mandheling')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="Sumatra Mandheling" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Medium-Dark</span>
+          <h2 class="card-title">Sumatra Mandheling</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>(4.2)</span>
+          </div>
+          <p class="card-desc">Earthy and full-bodied with notes of cedar, dark chocolate and subtle herbal complexity.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Sumatra Mandheling','Full-bodied and earthy, with notes of cedar, dark chocolate and herbal complexity. Wet-hulled processing unique to Indonesia.','₹1,600','Single Origin · Medium-Dark','https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80')">
+            Tasting Notes <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,600 <span class="price-sub">/ 250g</span></span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c4','Sumatra Mandheling','1600')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-roast="light" data-origin="africa" data-reveal data-reveal-delay="1">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c5','Kenya AA')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=700&q=80" alt="Kenya AA" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Light Roast</span>
+          <h2 class="card-title">Kenya AA</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+            <span>(4.6)</span>
+          </div>
+          <p class="card-desc">Bright and complex with blackcurrant, tomato acidity and a wine-like body that's uniquely Kenyan.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Kenya AA','Bright, complex and wine-like with blackcurrant and tomato acidity. AA grade — the largest, highest-quality Kenyan bean classification.','₹1,750','Single Origin · Light Roast','https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=700&q=80')">
+            Tasting Notes <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,750 <span class="price-sub">/ 250g</span></span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c5','Kenya AA','1750')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-roast="medium" data-origin="latam" data-reveal data-reveal-delay="2">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c6','Brazil Santos')" aria-label="Wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=700&q=80" alt="Brazil Santos" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Medium Roast</span>
+          <h2 class="card-title">Brazil Santos</h2>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>(4.1)</span>
+          </div>
+          <p class="card-desc">Low acidity, sweet and creamy with notes of milk chocolate and hazelnut. Ideal for espresso blends.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Brazil Santos','Low-acid, sweet and creamy with milk chocolate and hazelnut notes. Naturally processed in the Cerrado region of Brazil.','₹1,150','Single Origin · Medium Roast','https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=700&q=80')">
+            Tasting Notes <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,150 <span class="price-sub">/ 250g</span></span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c6','Brazil Santos','1150')">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- No results state -->
+      <div class="no-results" id="noResults" style="display:none;">
+        <i class="fas fa-mug-hot"></i>
+        <p>No coffees match your filters. <button class="btn btn-ghost btn-sm" style="margin-left:0.5rem;" onclick="clearCoffeeFilters()">Clear Filters</button></p>
+      </div>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- Newsletter Strip -->
+<section class="section-sm" style="background:var(--clr-surface); border-top:1px solid var(--clr-border);">
+  <div class="container text-center" data-reveal>
+    <span class="section-label">Stay in the know</span>
+    <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:0.5rem;">New origins, dropped weekly</h2>
+    <p class="section-subtitle" style="margin:0 auto 1.5rem;">Be the first to hear about new single-origins, limited releases and exclusive offers.</p>
+    <form onsubmit="subscribeNewsletter(event)" style="display:flex;gap:0.5rem;max-width:420px;margin:0 auto;flex-wrap:wrap;">
+      <input class="form-input" type="email" id="newsletterEmail" placeholder="your@email.com" required style="flex:1;min-width:200px;">
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function filterCoffee() {
+  const roast = document.getElementById('roastFilter').value;
+  const origin = document.getElementById('originFilter').value;
+  const cards = document.querySelectorAll('#coffeeGrid .card[data-roast]');
+  let visible = 0;
+  cards.forEach(card => {
+    const matchRoast = !roast || card.dataset.roast === roast;
+    const matchOrigin = !origin || card.dataset.origin === origin;
+    const show = matchRoast && matchOrigin;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+}
+
+function clearCoffeeFilters() {
+  document.getElementById('roastFilter').value = '';
+  document.getElementById('originFilter').value = '';
+  document.querySelector('.search-input').value = '';
+  filterCoffee();
+  document.querySelectorAll('#coffeeGrid .card').forEach(c => c.style.display = '');
+  document.getElementById('noResults').style.display = 'none';
+}
+
+function subscribeNewsletter(e) {
+  e.preventDefault();
+  const email = document.getElementById('newsletterEmail').value;
+  showToast(`✓ You're subscribed! Check ${email} for confirmation.`, 'success');
+  e.target.reset();
+}
+</script>
+{% endblock %}

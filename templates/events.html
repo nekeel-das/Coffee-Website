@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Events & Experiences | Bean Boutique</title>
+{% endblock %}
+
+{% block meta_desc %}Join Bean Boutique events — coffee tasting sessions, brewing masterclasses, and community meetups across India.{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Experiences</span>
+    <h1 class="section-title">Connect Over <em style="font-style:italic;color:var(--clr-accent);">Coffee</em></h1>
+    <p class="section-subtitle" style="margin:0 auto;">From guided cupping sessions to latte art masterclasses — immersive experiences designed for every level of coffee lover.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Controls -->
+    <div class="controls-bar" data-reveal>
+      <div class="search-box">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="search" class="search-input" id="eventSearch" placeholder="Search events…" autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <select class="filter-chip" id="eventTypeFilter" onchange="filterEvents()">
+          <option value="">All Types</option>
+          <option value="tasting">Tasting Sessions</option>
+          <option value="education">Masterclasses</option>
+          <option value="community">Community</option>
+        </select>
+        <select class="filter-chip" id="eventCostFilter" onchange="filterEvents()">
+          <option value="">Any Price</option>
+          <option value="free">Free Events</option>
+          <option value="paid">Paid Events</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="grid" id="eventsGrid">
+
+      <!-- Event 1 -->
+      <div class="event-card" data-type="tasting" data-cost="free" data-reveal data-reveal-delay="1">
+        <div class="event-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=700&q=80" alt="Origin Cupping Session" loading="lazy">
+          <div class="event-date-badge">
+            <span class="day">16</span>
+            <span class="month">Nov</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag"><i class="fas fa-circle" style="font-size:0.4rem;color:var(--clr-green);"></i> Tasting Session</span>
+          <h2 class="event-title">Origin Cupping Session</h2>
+          <div class="event-meta">
+            <span class="event-meta-item"><i class="fas fa-clock"></i> 10:00 AM – 12:00 PM</span>
+            <span class="event-meta-item"><i class="fas fa-location-dot"></i> Bean Boutique, Mumbai</span>
+            <span class="event-meta-item"><i class="fas fa-users"></i> Max 12 guests</span>
+          </div>
+          <p class="event-desc">Develop your palate alongside our Q-Graders. Taste through a rotating flight of rare micro-lots from around the globe — Ethiopia, Kenya, Colombia and more.</p>
+          <div class="event-footer">
+            <span class="event-price free"><i class="fas fa-ticket"></i> Free Admission</span>
+            <button class="btn btn-primary btn-sm" onclick="openEventRegistration('Origin Cupping Session','Saturday, Nov 16 at 10:00 AM')">
+              Register <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card" data-type="education" data-cost="paid" data-reveal data-reveal-delay="2">
+        <div class="event-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=80" alt="Espresso and Latte Art Masterclass" loading="lazy">
+          <div class="event-date-badge">
+            <span class="day">17</span>
+            <span class="month">Nov</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag"><i class="fas fa-circle" style="font-size:0.4rem;color:var(--clr-accent);"></i> Masterclass</span>
+          <h2 class="event-title">Espresso & Latte Art Masterclass</h2>
+          <div class="event-meta">
+            <span class="event-meta-item"><i class="fas fa-clock"></i> 2:00 PM – 5:00 PM</span>
+            <span class="event-meta-item"><i class="fas fa-location-dot"></i> Bean Boutique, Mumbai</span>
+            <span class="event-meta-item"><i class="fas fa-users"></i> Max 8 guests</span>
+          </div>
+          <p class="event-desc">Hands-on masterclass covering espresso dial-in theory and the mechanics of pouring symmetrical rosettas and tulips. Equipment and coffee provided.</p>
+          <div class="event-footer">
+            <span class="event-price">₹1,200 <span class="price-sub">/ person</span></span>
+            <button class="btn btn-primary btn-sm" onclick="openEventRegistration('Espresso & Latte Art Masterclass','Sunday, Nov 17 at 2:00 PM')">
+              Register <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card" data-type="community" data-cost="free" data-reveal data-reveal-delay="3">
+        <div class="event-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?auto=format&fit=crop&w=700&q=80" alt="Community Brew Morning" loading="lazy">
+          <div class="event-date-badge">
+            <span class="day">23</span>
+            <span class="month">Nov</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag"><i class="fas fa-circle" style="font-size:0.4rem;color:var(--clr-text-faint);"></i> Community</span>
+          <h2 class="event-title">Community Brew Morning</h2>
+          <div class="event-meta">
+            <span class="event-meta-item"><i class="fas fa-clock"></i> 9:00 AM – 11:00 AM</span>
+            <span class="event-meta-item"><i class="fas fa-location-dot"></i> Bandra West, Mumbai</span>
+            <span class="event-meta-item"><i class="fas fa-users"></i> Open to all</span>
+          </div>
+          <p class="event-desc">A relaxed weekend gathering for local coffee lovers. Bring your own brewer, try someone else's setup, and enjoy great coffee and conversation.</p>
+          <div class="event-footer">
+            <span class="event-price free"><i class="fas fa-ticket"></i> Free Admission</span>
+            <button class="btn btn-primary btn-sm" onclick="openEventRegistration('Community Brew Morning','Saturday, Nov 23 at 9:00 AM')">
+              Register <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="event-card" data-type="education" data-cost="paid" data-reveal data-reveal-delay="4">
+        <div class="event-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80" alt="Pour-Over Perfection Workshop" loading="lazy">
+          <div class="event-date-badge">
+            <span class="day">30</span>
+            <span class="month">Nov</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag"><i class="fas fa-circle" style="font-size:0.4rem;color:var(--clr-accent);"></i> Masterclass</span>
+          <h2 class="event-title">Pour-Over Perfection Workshop</h2>
+          <div class="event-meta">
+            <span class="event-meta-item"><i class="fas fa-clock"></i> 11:00 AM – 1:00 PM</span>
+            <span class="event-meta-item"><i class="fas fa-location-dot"></i> Bean Boutique, Mumbai</span>
+            <span class="event-meta-item"><i class="fas fa-users"></i> Max 10 guests</span>
+          </div>
+          <p class="event-desc">Master the Hario V60, Chemex and Kalita Wave. Learn water temperature, bloom technique, and the science of coffee extraction ratios.</p>
+          <div class="event-footer">
+            <span class="event-price">₹800 <span class="price-sub">/ person</span></span>
+            <button class="btn btn-primary btn-sm" onclick="openEventRegistration('Pour-Over Perfection Workshop','Saturday, Nov 30 at 11:00 AM')">
+              Register <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results" id="noEventResults" style="display:none;">
+        <i class="fas fa-calendar-xmark"></i>
+        <p>No events match your search. <button class="btn btn-ghost btn-sm" style="margin-left:0.5rem;" onclick="clearEventFilters()">Clear Filters</button></p>
+      </div>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- CTA Strip -->
+<section class="section-sm" style="background:var(--clr-surface); border-top:1px solid var(--clr-border);">
+  <div class="container text-center" data-reveal>
+    <span class="section-label">Host an Event</span>
+    <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:0.5rem;">Want a private tasting?</h2>
+    <p class="section-subtitle" style="margin:0 auto 1.75rem;">We host private corporate events, birthdays, and team experiences. Get in touch to craft a custom coffee journey.</p>
+    <button class="btn btn-primary btn-lg" onclick="showComingSoon(event)">
+      <i class="fas fa-envelope"></i> Enquire Now
+    </button>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function filterEvents() {
+  const type = document.getElementById('eventTypeFilter').value;
+  const cost = document.getElementById('eventCostFilter').value;
+  const cards = document.querySelectorAll('#eventsGrid .event-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const matchType = !type || card.dataset.type === type;
+    const matchCost = !cost || card.dataset.cost === cost;
+    const show = matchType && matchCost;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noEventResults').style.display = visible === 0 ? 'block' : 'none';
+}
+function clearEventFilters() {
+  document.getElementById('eventTypeFilter').value = '';
+  document.getElementById('eventCostFilter').value = '';
+  document.getElementById('eventSearch').value = '';
+  document.querySelectorAll('#eventsGrid .event-card').forEach(c => c.style.display = '');
+  document.getElementById('noEventResults').style.display = 'none';
+}
+</script>
+{% endblock %}

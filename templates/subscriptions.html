@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Subscriptions | Bean Boutique</title>
+{% endblock %}
+
+{% block meta_desc %}Subscribe to Bean Boutique and receive freshly roasted specialty coffee delivered to your door every month. Cancel anytime.{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container text-center">
+    <span class="section-label">Never Run Out</span>
+    <h1 class="section-title">Coffee on <em style="font-style:italic;color:var(--clr-accent);">Autopilot.</em></h1>
+    <p class="section-subtitle" style="margin:0 auto;">An endless rotation of exceptional single-origins and blends, roasted fresh and delivered directly to your door. Skip, pause, or cancel anytime — zero friction.</p>
+  </div>
+</section>
+
+<!-- Billing Toggle -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem;" data-reveal>
+      <div style="display:inline-flex;align-items:center;gap:1rem;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-full);padding:0.5rem 1rem;">
+        <button class="auth-tab active" id="toggleMonthly" onclick="setBillingCycle('monthly')" style="min-width:110px;">Monthly</button>
+        <button class="auth-tab" id="toggleAnnual" onclick="setBillingCycle('annual')" style="min-width:110px;">
+          Annual <span style="font-size:0.65rem;background:var(--clr-accent);color:#fff;padding:0.15rem 0.4rem;border-radius:var(--radius-full);font-weight:700;margin-left:0.25rem;">-20%</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Subscription Cards -->
+    <div class="subs-grid" id="subsGrid">
+
+      <!-- Explorer -->
+      <div class="sub-card" data-reveal data-reveal-delay="1">
+        <div>
+          <div class="sub-tier">Explorer</div>
+          <p style="font-size:0.8rem;color:var(--clr-text-faint);margin-top:0.25rem;">For the curious beginner</p>
+        </div>
+        <div class="sub-price-block">
+          <span class="sub-price" id="explorerPrice">₹1,700</span>
+          <span class="sub-price-period">/ month</span>
+        </div>
+        <div class="sub-features">
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> 1 bag (250g) of curated single-origin</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Shipped every 4 weeks</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Tasting notes and brew guide included</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Choose whole bean or pre-ground</div>
+          <div class="sub-feature" style="color:var(--clr-text-faint);"><i class="fas fa-times-circle" style="color:var(--clr-text-faint);"></i> Priority new releases</div>
+          <div class="sub-feature" style="color:var(--clr-text-faint);"><i class="fas fa-times-circle" style="color:var(--clr-text-faint);"></i> Event invitations</div>
+        </div>
+        <button class="btn btn-outline btn-full" onclick="subscribeTo('Explorer')">Get Started</button>
+      </div>
+
+      <!-- Enthusiast (Popular) -->
+      <div class="sub-card popular" data-reveal data-reveal-delay="2">
+        <div class="sub-popular-badge">Most Popular</div>
+        <div>
+          <div class="sub-tier">Enthusiast</div>
+          <p style="font-size:0.8rem;color:var(--clr-text-faint);margin-top:0.25rem;">For the passionate home barista</p>
+        </div>
+        <div class="sub-price-block">
+          <span class="sub-price" id="enthusiastPrice">₹3,000</span>
+          <span class="sub-price-period">/ month</span>
+        </div>
+        <div class="sub-features">
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> 2 bags (blends + single-origins)</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Shipped every 2 weeks</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Tasting notes and brew guide</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Choose whole bean or pre-ground</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Priority access to new releases</div>
+          <div class="sub-feature" style="color:var(--clr-text-faint);"><i class="fas fa-times-circle" style="color:var(--clr-text-faint);"></i> VIP event invitations</div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="subscribeTo('Enthusiast')">Get Started</button>
+      </div>
+
+      <!-- Connoisseur -->
+      <div class="sub-card" data-reveal data-reveal-delay="3">
+        <div>
+          <div class="sub-tier">Connoisseur</div>
+          <p style="font-size:0.8rem;color:var(--clr-text-faint);margin-top:0.25rem;">For the dedicated coffee expert</p>
+        </div>
+        <div class="sub-price-block">
+          <span class="sub-price" id="connoisseurPrice">₹4,200</span>
+          <span class="sub-price-period">/ month</span>
+        </div>
+        <div class="sub-features">
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> 3 bags (premium reserve selection)</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Customisable delivery frequency</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Curated tasting notes + roaster call</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Choose whole bean or pre-ground</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> Priority access to new releases</div>
+          <div class="sub-feature"><i class="fas fa-check-circle"></i> VIP event invitations</div>
+        </div>
+        <button class="btn btn-outline btn-full" onclick="subscribeTo('Connoisseur')">Get Started</button>
+      </div>
+
+    </div><!-- /subs-grid -->
+
+    <!-- Comparison note -->
+    <p style="text-align:center;font-size:0.8rem;color:var(--clr-text-faint);margin-top:2rem;" data-reveal>
+      All plans include free shipping. Annual billing saves 20%. Cancel or pause anytime from your account.
+    </p>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section" style="background:var(--clr-surface);border-top:1px solid var(--clr-border);">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">Three simple steps</h2>
+    </div>
+    <div class="features-grid" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));">
+      <div class="feature-card text-center" data-reveal data-reveal-delay="1">
+        <div class="feature-icon" style="margin:0 auto 1rem;">
+          <i class="fas fa-hand-pointer"></i>
+        </div>
+        <h3>1. Choose your plan</h3>
+        <p>Pick the subscription tier that suits your coffee consumption and preferences.</p>
+      </div>
+      <div class="feature-card text-center" data-reveal data-reveal-delay="2">
+        <div class="feature-icon" style="margin:0 auto 1rem;">
+          <i class="fas fa-fire-flame-curved"></i>
+        </div>
+        <h3>2. We roast fresh</h3>
+        <p>Your beans are roasted to order within 48 hours of your scheduled delivery date.</p>
+      </div>
+      <div class="feature-card text-center" data-reveal data-reveal-delay="3">
+        <div class="feature-icon" style="margin:0 auto 1rem;">
+          <i class="fas fa-truck-fast"></i>
+        </div>
+        <h3>3. Enjoy the ritual</h3>
+        <p>Delivered to your door with tasting notes, a brew guide, and our full support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="max-width:720px;">
+    <div class="text-center" data-reveal>
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Common questions</h2>
+    </div>
+    <div style="margin-top:2.5rem;display:flex;flex-direction:column;gap:0.75rem;" data-reveal>
+
+      <div class="feature-card" onclick="toggleFaq(this)" style="cursor:pointer;user-select:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h3 style="font-size:0.95rem;">Can I change my plan after subscribing?</h3>
+          <i class="fas fa-chevron-down" style="color:var(--clr-text-muted);font-size:0.8rem;transition:var(--transition);flex-shrink:0;"></i>
+        </div>
+        <p style="margin-top:0.75rem;display:none;">Yes! You can upgrade, downgrade or change your grind preference at any time from your account settings. Changes take effect from your next billing cycle.</p>
+      </div>
+
+      <div class="feature-card" onclick="toggleFaq(this)" style="cursor:pointer;user-select:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h3 style="font-size:0.95rem;">How do I pause or skip a delivery?</h3>
+          <i class="fas fa-chevron-down" style="color:var(--clr-text-muted);font-size:0.8rem;transition:var(--transition);flex-shrink:0;"></i>
+        </div>
+        <p style="margin-top:0.75rem;display:none;">Log into your account and navigate to Subscriptions. You can skip the next shipment or pause for up to 3 months with a single click — no questions asked.</p>
+      </div>
+
+      <div class="feature-card" onclick="toggleFaq(this)" style="cursor:pointer;user-select:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h3 style="font-size:0.95rem;">What if I don't like a particular coffee?</h3>
+          <i class="fas fa-chevron-down" style="color:var(--clr-text-muted);font-size:0.8rem;transition:var(--transition);flex-shrink:0;"></i>
+        </div>
+        <p style="margin-top:0.75rem;display:none;">We want you to love every cup. If you receive a coffee that doesn't suit your taste, contact us within 14 days and we'll send a replacement — at no extra cost.</p>
+      </div>
+
+      <div class="feature-card" onclick="toggleFaq(this)" style="cursor:pointer;user-select:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h3 style="font-size:0.95rem;">Do you ship outside India?</h3>
+          <i class="fas fa-chevron-down" style="color:var(--clr-text-muted);font-size:0.8rem;transition:var(--transition);flex-shrink:0;"></i>
+        </div>
+        <p style="margin-top:0.75rem;display:none;">Currently our subscriptions are available across India only. International shipping for one-off orders is coming soon — sign up to be notified.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+const monthlyPrices = { explorer: '₹1,700', enthusiast: '₹3,000', connoisseur: '₹4,200' };
+const annualPrices  = { explorer: '₹1,360', enthusiast: '₹2,400', connoisseur: '₹3,360' };
+let currentCycle = 'monthly';
+
+function setBillingCycle(cycle) {
+  currentCycle = cycle;
+  document.getElementById('toggleMonthly').classList.toggle('active', cycle === 'monthly');
+  document.getElementById('toggleAnnual').classList.toggle('active', cycle === 'annual');
+  const prices = cycle === 'monthly' ? monthlyPrices : annualPrices;
+  document.getElementById('explorerPrice').textContent     = prices.explorer;
+  document.getElementById('enthusiastPrice').textContent   = prices.enthusiast;
+  document.getElementById('connoisseurPrice').textContent  = prices.connoisseur;
+}
+
+function subscribeTo(tier) {
+  const prices = currentCycle === 'monthly' ? monthlyPrices : annualPrices;
+  openSubscribeModal(tier, prices[tier.toLowerCase()]);
+}
+
+function toggleFaq(card) {
+  const p = card.querySelector('p');
+  const icon = card.querySelector('i');
+  const isOpen = p.style.display !== 'none';
+  p.style.display = isOpen ? 'none' : 'block';
+  icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+</script>
+{% endblock %}

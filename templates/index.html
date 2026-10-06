@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Bean Boutique | Premium Coffee &amp; Brewing Experience</title>
+{% endblock %}
+
+{% block meta_desc %}Discover single-origin coffees, professional brewing equipment and immersive coffee events at Bean Boutique.{% endblock %}
+
+{% block nav_class %}{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg" role="img" aria-label="Coffee beans being poured"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-leaf"></i> Freshly Roasted to Order</div>
+    <h1>Craft your<br><em>perfect cup</em>,<br>every morning.</h1>
+    <p>Discover our curated collection of single-origin coffees and professional brewing equipment, tailored for the modern enthusiast.</p>
+    <div class="hero-actions">
+      <a href="{{ url_for('coffee') }}" class="btn btn-primary btn-lg">
+        Explore Our Selection <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="{{ url_for('subscriptions') }}" class="btn btn-outline btn-lg">
+        View Subscriptions
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURES STRIP
+═══════════════════════════════════════════ -->
+<section class="section-sm" style="background:var(--clr-surface); border-bottom: 1px solid var(--clr-border);">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-card" data-reveal data-reveal-delay="1">
+        <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Direct Trade</h3>
+        <p>We partner directly with farmers for ethically sourced, premium-quality beans.</p>
+      </div>
+      <div class="feature-card" data-reveal data-reveal-delay="2">
+        <div class="feature-icon"><i class="fas fa-fire-flame-curved"></i></div>
+        <h3>Fresh Roasted</h3>
+        <p>Every order is roasted within 48 hours of dispatch for peak flavour.</p>
+      </div>
+      <div class="feature-card" data-reveal data-reveal-delay="3">
+        <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+        <h3>Fast Delivery</h3>
+        <p>Free shipping on orders over ₹5,000. Delivered across India in 2–4 days.</p>
+      </div>
+      <div class="feature-card" data-reveal data-reveal-delay="4">
+        <div class="feature-icon"><i class="fas fa-rotate"></i></div>
+        <h3>Easy Subscriptions</h3>
+        <p>Pause, skip, or cancel your subscription anytime — no questions asked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURED PRODUCTS
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-label">Fresh Arrivals</span>
+      <h2 class="section-title">Featured Highlights</h2>
+      <p class="section-subtitle">Hand-picked favourites from our roasting team — each one a testament to the art of specialty coffee.</p>
+    </div>
+
+    <div class="grid" style="margin-top:3rem;">
+
+      <!-- Card 1 -->
+      <div class="card" data-reveal data-reveal-delay="1">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c1','Ethiopian Yirgacheffe')" aria-label="Add to wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=800&q=80" alt="Ethiopian Yirgacheffe" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Africa</span>
+          <h3 class="card-title">Ethiopian Yirgacheffe</h3>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+            <span>(4.8)</span>
+          </div>
+          <p class="card-desc">Floral brightness with notes of jasmine and bergamot citrus. Light roast.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Ethiopian Yirgacheffe','Experience floral brightness with delicate notes of jasmine and citrus. Hand-picked at 2000m elevation and fully washed for supreme clarity.','₹1,500','Single Origin',this.closest('.card').querySelector('img').src)">
+            Read more <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,500</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c1','Ethiopian Yirgacheffe','1500')">
+              <i class="fas fa-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" data-reveal data-reveal-delay="2">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'c2','Colombian Supremo')" aria-label="Add to wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="Colombian Supremo" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Single Origin · Latin America</span>
+          <h3 class="card-title">Colombian Supremo</h3>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(4.9)</span>
+          </div>
+          <p class="card-desc">Balanced and nutty with caramel sweetness and a smooth, lingering finish.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Colombian Supremo','Perfectly balanced with a smooth, medium body, pronounced nutty undertones, and a lingering caramel finish. A morning staple.','₹1,300','Single Origin',this.closest('.card').querySelector('img').src)">
+            Read more <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹1,300</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'c2','Colombian Supremo','1300')">
+              <i class="fas fa-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" data-reveal data-reveal-delay="3">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'eq1','Precision Pour-Over Set')" aria-label="Add to wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80" alt="Pour-Over Set" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Equipment · Pour-Over</span>
+          <h3 class="card-title">Precision Pour-Over Set</h3>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(5.0)</span>
+          </div>
+          <p class="card-desc">Ceramic dripper + glass carafe engineered for heat retention and perfect extraction.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Precision Pour-Over Set','Elevate your morning ritual with our meticulously designed ceramic dripper and glass carafe. Engineered for optimal heat retention and precise extraction flow.','₹3,800','Equipment',this.closest('.card').querySelector('img').src)">
+            Read more <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price">₹3,800</span>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(this,'eq1','Precision Pour-Over Set','3800')">
+              <i class="fas fa-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 Weekend Tasting -->
+      <div class="card" data-reveal data-reveal-delay="4">
+        <button class="wishlist-btn" onclick="toggleWishlist(this,'ev1','Weekend Tasting')" aria-label="Save event">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?auto=format&fit=crop&w=800&q=80" alt="Weekend Tasting" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Upcoming Event · Tasting</span>
+          <h3 class="card-title">Weekend Tasting</h3>
+          <div class="card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(4.9)</span>
+          </div>
+          <p class="card-desc">Guided cupping session with our head roaster. Explore African micro-lots.</p>
+          <button class="read-more-btn" onclick="openDetailsModal('Weekend Tasting','Join our head roaster to explore the nuanced flavour profiles of our African collection. Includes a guided cupping session and a complimentary bag of coffee.','Free','Event',this.closest('.card').querySelector('img').src)">
+            Read more <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          </button>
+          <div class="card-footer">
+            <span class="price" style="color:var(--clr-green);">Free</span>
+            <button class="btn btn-outline btn-sm" onclick="openEventRegistration('Weekend Tasting','Saturday, Nov 16')">
+              Register <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <div class="text-center" style="margin-top:2.5rem;" data-reveal>
+      <a href="{{ url_for('coffee') }}" class="btn btn-ghost">View All Products <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STATS STRIP
+═══════════════════════════════════════════ -->
+<section class="section-sm" data-reveal>
+  <div class="container">
+    <div class="stat-strip">
+      <div class="stat-item">
+        <div class="stat-number">24+</div>
+        <div class="stat-label">Origins</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">12k+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.9★</div>
+        <div class="stat-label">Avg. Rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">48h</div>
+        <div class="stat-label">Roast-to-Ship</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     QUOTE / PHILOSOPHY
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container" data-reveal>
+    <div class="quote-section">
+      <blockquote>"Coffee is not just a beverage — it's a ritual, a craft, a conversation with the land it came from."</blockquote>
+      <div class="quote-author">— <span>Arjun Mehta</span>, Head Roaster at Bean Boutique</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section class="section" style="background:var(--clr-surface); border-top:1px solid var(--clr-border);">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-label">Reviews</span>
+      <h2 class="section-title">Loved by coffee lovers</h2>
+    </div>
+    <div class="testimonials-grid" style="margin-top:2.5rem;">
+      <div class="testimonial-card" data-reveal data-reveal-delay="1">
+        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testimonial-text">"The Ethiopian Yirgacheffe completely changed how I think about coffee. Floral, complex, and absolutely stunning. Will never go back to grocery store beans."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">P</div>
+          <div class="testimonial-author-info">
+            <strong>Priya Sharma</strong>
+            <span>Verified Customer · Mumbai</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-reveal data-reveal-delay="2">
+        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testimonial-text">"My Enthusiast subscription is the highlight of my month. Each delivery is a discovery. The packaging is impeccable and the beans arrive so fresh."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-author-info">
+            <strong>Rahul Verma</strong>
+            <span>Enthusiast Subscriber · Bengaluru</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-reveal data-reveal-delay="3">
+        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i></div>
+        <p class="testimonial-text">"The latte art masterclass was incredible. The instructors are passionate and the environment is genuinely welcoming. Already booked my next session!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-author-info">
+            <strong>Aisha Khan</strong>
+            <span>Event Attendee · Delhi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MAP / VISIT
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div data-reveal style="margin-bottom:2rem;">
+      <span class="section-label">Visit Us</span>
+      <h2 class="section-title">Our Boutique</h2>
+      <p class="section-subtitle">Come in for a tasting session or simply browse our collection in person. We'd love to see you.</p>
+    </div>
+    <div class="map-wrapper" data-reveal>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.1!2d72.8577!3d19.0760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDQ0JzUyLjYiTiA3MsKwNTEnMjcuNyJF!5e0!3m2!1sen!2sin!4v1620000000000"
+        title="Bean Boutique location"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

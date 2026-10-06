@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>My Orders | Bean Boutique</title>
+{% endblock %}
+
+{% block meta_desc %}View your Bean Boutique order history and reorder your favourites.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Account</span>
+    <h1 class="section-title">My Orders</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" id="ordersRoot"></div>
+</section>
+{% endblock %}
