@@ -1,4 +1,4 @@
-# Bean Boutique ☕
+# Bean Boutique
 
 Bean Boutique is a premium, full-stack web application designed for a specialty coffee shop. It offers a sleek and modern user interface for browsing single-origin coffees, brewing equipment, and booking tasting events. 
 
