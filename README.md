@@ -111,7 +111,3 @@ To allow for immediate testing and a seamless demo experience without requiring 
 - Order History (`bb_orders`)
 - Event Registrations (`bb_events`)
 - Active Subscriptions (`bb_subscription`)
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
